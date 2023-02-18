@@ -1,9 +1,6 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 
 import java.util.UUID;
 

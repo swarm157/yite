@@ -1,0 +1,27 @@
+#!/bin/sh
+# rsync script
+
+name='Yite'
+target="/home/$USER/IdeaProjects/$name/target"
+tomcat_base="/home/$USER/java_stuff/tomcat/9/apache-tomcat-9.0.67/"
+tomcat="$tomcat_base/bin/catalina.sh"
+webapps="$tomcat_base/webapps"
+
+JAVA_HOME="/home/$USER/java_stuff/jdks/hotspot/amazon-corretto-8.362.08.1-linux-x64/"
+
+echo removing old files
+rm -rf "$webapps/$name"
+rm -rf "$target"
+
+mvn='/usr/bin/mvn'
+
+echo building project
+mvn compiler:compile -f "/home/$USER/IdeaProjects/$name/pom.xml"
+mvn war:exploded -f "/home/$USER/IdeaProjects/$name/pom.xml"
+
+echo preparing to run
+echo "$webapps/$name/$name"
+cp -r "$target/$name" "$webapps"
+
+echo running project
+$tomcat run

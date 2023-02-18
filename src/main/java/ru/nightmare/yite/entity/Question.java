@@ -1,14 +1,14 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "message")
-public class Message {
+@Table(name = "question.html")
+public class Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 

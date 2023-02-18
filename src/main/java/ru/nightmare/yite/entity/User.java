@@ -1,9 +1,11 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.entity;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
+
+import lombok.*;
+
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,7 +15,7 @@ import java.util.UUID;
 @Setter
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 

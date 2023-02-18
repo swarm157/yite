@@ -1,0 +1,13 @@
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hbm2ddl.auto">create</property>
+        <property name="dialect">org.sqlite.hibernate.dialect.SQLiteDialect</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:local.db</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+
+    </session-factory>
+</hibernate-configuration>

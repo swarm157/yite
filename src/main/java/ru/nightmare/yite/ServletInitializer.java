@@ -1,13 +1,17 @@
 package ru.nightmare.yite;
 
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ServletInitializer extends SpringBootServletInitializer {
+public class ServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+    protected Class<?>[] getRootConfigClasses() {
+        return null;
+    }
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(YiteApplication.class);
-	}
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[] {SpringConfiguration.class};
+    }
 
+    protected String[] getServletMappings() {
+        return new String[] {"/"};
+    }
 }
