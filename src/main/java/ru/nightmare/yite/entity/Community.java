@@ -9,11 +9,16 @@ import java.util.UUID;
 public class Community {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    private boolean accessibility;
+    private String name;
+    private UUID pinnedPost;
+    private String description;
+    private String rules;
 
-    public UUID getId() {
-        return id;
-    }
+    private UUID owner;
+    public UUID getId() {return id; }
 
     public void setId(UUID id) {
         this.id = id;

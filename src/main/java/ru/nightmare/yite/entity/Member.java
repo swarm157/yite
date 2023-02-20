@@ -1,19 +1,17 @@
 package ru.nightmare.yite.entity;
 
 import javax.persistence.*;
-
 import java.util.UUID;
 
 @Entity
-@Table(name = "message")
-public class Message {
+@Table(name = "member")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
-
     private UUID user;
-    private String text;
+    private UUID of;
 
     public UUID getId() {
         return id;

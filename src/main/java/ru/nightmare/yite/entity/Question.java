@@ -11,6 +11,10 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
+    private UUID user;
+    private String name;
+    private boolean solved;
+    private boolean closed;
 
     public UUID getId() {
         return id;

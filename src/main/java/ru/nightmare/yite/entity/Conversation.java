@@ -11,6 +11,12 @@ public class Conversation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
+    private boolean accessibility;
+    private UUID pinned;
+    private String description;
+    private String rules;
+    private boolean blocked;
+    private boolean speedLimit;
 
     public UUID getId() {
         return id;

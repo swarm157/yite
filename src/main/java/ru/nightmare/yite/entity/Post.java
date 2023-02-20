@@ -11,6 +11,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
+    private String text;
+    private UUID user;
+    private boolean hidden;
 
     public UUID getId() {
         return id;
