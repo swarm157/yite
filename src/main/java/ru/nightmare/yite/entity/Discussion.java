@@ -1,21 +1,35 @@
 package ru.nightmare.yite.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "discussion")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Discussion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "creator", nullable = false)
     private UUID creator;
+    @Column(name = "community", nullable = true)
     private UUID community;
-    private boolean opened;
+    @Column(name = "opened", nullable = false)
+    private Boolean opened;
+    @Column(name = "description", nullable = false)
     private String description;
     public UUID getId() {
         return id;

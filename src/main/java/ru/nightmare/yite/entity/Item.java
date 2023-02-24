@@ -10,6 +10,10 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
+    @Column(name = "original_name", nullable = false)
+    private String originalName;
+    @Column(name = "file_name", nullable = false)
+    private String fileName;
 
     public UUID getId() {
         return id;
