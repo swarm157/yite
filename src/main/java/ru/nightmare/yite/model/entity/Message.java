@@ -1,4 +1,4 @@
-package ru.nightmare.yite.entity;
+package ru.nightmare.yite.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,30 +7,28 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "discussion")
+@Table(name = "message")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Discussion {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-    @Column(name = "creator", nullable = false)
-    private UUID creator;
-    @Column(name = "community", nullable = true)
-    private UUID community;
-    @Column(name = "opened", nullable = false)
-    private Boolean opened;
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "user", nullable = false)
+    private UUID user;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "message")
+    Set<Item> items;
+    @Column(name = "text", nullable = false)
+    private String text;
+
     public UUID getId() {
         return id;
     }

@@ -1,12 +1,21 @@
-package ru.nightmare.yite.entity;
+package ru.nightmare.yite.model.entity;
 
 
 
 import lombok.*;
+import org.hibernate.annotations.Persister;
+import org.hibernate.persister.entity.EntityPersister;
 
 
+import javax.imageio.ImageIO;
 import javax.persistence.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +30,12 @@ public class User {
     @Column(name = "id", nullable = false)
     private UUID id;
 
+    @OneToMany(mappedBy = "user")
+    @Persister(impl = EntityPersister.class)
+    private Set<Member> memberOf;
+    @OneToMany(mappedBy = "user")
+    @Persister(impl = EntityPersister.class)
+    private Set<Friend> friends;
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "last_name", nullable = false)
@@ -37,5 +52,13 @@ public class User {
     private String description;
     @Column(name = "avatar", nullable = false)
     private byte[] avatar;
+    public void setAvatar(BufferedImage icon) throws IOException {
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        ImageIO.write(icon, "png", os);
+        avatar = os.toByteArray();
+    }
 
+    public Image getAvatar() {
+        return new ImageIcon(avatar).getImage();
+    }
 }

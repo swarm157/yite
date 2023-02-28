@@ -1,4 +1,4 @@
-package ru.nightmare.yite.entity;
+package ru.nightmare.yite.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -31,8 +32,14 @@ public class Community {
     @Column(name = "rules", nullable = false)
     private String rules;
 
-    @Column(name = "name", nullable = false)
-    private UUID owner;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "id")
+    private User owner;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<GroupAdmin> admins;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ofWhat")
+    private Set<Member> members;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "community")
+    private Set<Discussion> discussions;
     public UUID getId() {return id; }
 
     public void setId(UUID id) {

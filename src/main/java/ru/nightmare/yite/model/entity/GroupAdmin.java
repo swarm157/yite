@@ -1,4 +1,4 @@
-package ru.nightmare.yite.entity;
+package ru.nightmare.yite.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
