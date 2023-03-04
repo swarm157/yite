@@ -1,4 +1,4 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.model.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,30 +11,23 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "question")
+@Table(name = "message")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Question {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
+
     @Column(name = "user", nullable = false)
     private UUID user;
-    @Column(name = "discussion", nullable = false)
-    private UUID discussion;
-    @Column(name = "name", nullable = false)
-    private String name;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "message")
+    Set<Item> items;
     @Column(name = "text", nullable = false)
     private String text;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Message> messages;
-    @Column(name = "solved", nullable = false)
-    private boolean solved;
-    @Column(name = "closed", nullable = false)
-    private boolean closed;
 
     public UUID getId() {
         return id;

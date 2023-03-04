@@ -1,4 +1,4 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.model.data.entity;
 
 
 
@@ -30,12 +30,15 @@ public class User {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @OneToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "user")
     @Persister(impl = EntityPersister.class)
     private Set<Member> memberOf;
-    @OneToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "user")
     @Persister(impl = EntityPersister.class)
     private Set<Friend> friends;
+    @ManyToMany(mappedBy = "user")
+    @Persister(impl = EntityPersister.class)
+    private Set<Post> posts;
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "last_name", nullable = false)

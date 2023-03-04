@@ -1,4 +1,4 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.model.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,7 +32,7 @@ public class Discussion {
     private Boolean opened;
     @Column(name = "description", nullable = false)
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "discussion")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "discussion")
     private Set<Question> questions;
     public UUID getId() {
         return id;

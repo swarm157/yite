@@ -1,4 +1,4 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.model.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,13 +32,13 @@ public class Community {
     @Column(name = "rules", nullable = false)
     private String rules;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "id")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private User owner;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<GroupAdmin> admins;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ofWhat")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "ofWhat")
     private Set<Member> members;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "community")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "community")
     private Set<Discussion> discussions;
     public UUID getId() {return id; }
 

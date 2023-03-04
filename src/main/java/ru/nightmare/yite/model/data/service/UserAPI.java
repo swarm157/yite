@@ -1,4 +1,4 @@
-package ru.nightmare.yite.model.services;
+package ru.nightmare.yite.model.data.service;
 
 import org.springframework.stereotype.Service;
 

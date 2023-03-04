@@ -1,4 +1,4 @@
-package ru.nightmare.yite.model.entity;
+package ru.nightmare.yite.model.data.entity;
 
 import javax.persistence.*;
 import java.util.UUID;
