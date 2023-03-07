@@ -32,7 +32,7 @@ public class Community {
     @Column(name = "rules", nullable = false)
     private String rules;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "id")
     private User owner;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<GroupAdmin> admins;

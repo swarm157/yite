@@ -14,7 +14,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -49,12 +50,14 @@ public class User {
     private Date registrationTime;
     @Column(name = "birthday", nullable = false)
     private Date birthday;
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = true)
     private String status;
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = true)
     private String description;
-    @Column(name = "avatar", nullable = false)
+    @Column(name = "avatar", nullable = true)
     private byte[] avatar;
+
+
     public void setAvatar(BufferedImage icon) throws IOException {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ImageIO.write(icon, "png", os);
